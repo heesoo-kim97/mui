@@ -34,38 +34,38 @@ export default function Create() {
     setTitleError(false)
     setDetailsError(false)
 
-    if (title == '') {
+    if (title === '') {
       setTitleError(true)
     }
-    if (details == '') {
+    if (details === '') {
       setDetailsError(true)
     }
     if (title && details) {
-      fetch('http://localhost:8000/notes', {
+      fetch('http://localhost:3000/notes', {
         method: 'POST',
-        headers: {"Content-type": "application/json"},
+        headers: { "Content-type": "application/json" },
         body: JSON.stringify({ title, details, category })
       }).then(() => history.push('/'))
-    } 
+    }
   }
 
   return (
     <Container size="sm">
       <Typography
-        variant="h6" 
+        variant="h6"
         color="textSecondary"
         component="h2"
         gutterBottom
       >
         Create a New Note
       </Typography>
-      
+
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField className={classes.field}
           onChange={(e) => setTitle(e.target.value)}
-          label="Note Title" 
-          variant="outlined" 
-          color="secondary" 
+          label="Note Title"
+          variant="outlined"
+          color="secondary"
           fullWidth
           required
           error={titleError}
@@ -96,15 +96,15 @@ export default function Create() {
         </FormControl>
 
         <Button
-          type="submit" 
-          color="secondary" 
+          type="submit"
+          color="secondary"
           variant="contained"
           endIcon={<KeyboardArrowRightIcon />}>
           Submit
         </Button>
       </form>
 
-      
+
     </Container>
   )
 }

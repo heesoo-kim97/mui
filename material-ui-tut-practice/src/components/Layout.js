@@ -57,23 +57,23 @@ export default function Layout({ children }) {
   const location = useLocation()
 
   const menuItems = [
-    { 
-      text: 'My Notes', 
-      icon: <SubjectOutlined color="secondary" />, 
-      path: '/' 
+    {
+      text: 'My Notes',
+      icon: <SubjectOutlined color="secondary" />,
+      path: '/'
     },
-    { 
-      text: 'Create Note', 
-      icon: <AddCircleOutlineOutlined color="secondary" />, 
-      path: '/create' 
+    {
+      text: 'Create Note',
+      icon: <AddCircleOutlineOutlined color="secondary" />,
+      path: '/create'
     },
   ];
 
   return (
     <div className={classes.root}>
       {/* app bar */}
-      <AppBar 
-        position="fixed" 
+      <AppBar
+        position="fixed"
         className={classes.appBar}
         elevation={0}
         color="primary"
@@ -103,24 +103,24 @@ export default function Layout({ children }) {
         {/* links/list section */}
         <List>
           {menuItems.map((item) => (
-            <ListItem 
-              button 
-              key={item.text} 
+            <ListItem
+              button
+              key={item.text}
               onClick={() => history.push(item.path)}
-              className={location.pathname == item.path ? classes.active : null}
+              className={location.pathname === item.path ? classes.active : null}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
-        
+
       </Drawer>
 
       {/* main content */}
       <div className={classes.page}>
         <div className={classes.toolbar}></div>
-        { children }
+        {children}
       </div>
     </div>
   )
